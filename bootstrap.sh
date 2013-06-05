@@ -19,7 +19,7 @@
 if [ "$UID" -ne 0 ]
 then
     echo "Elevating permissions to root"
-    sudo "$0" "$@"
+    /usr/bin/sudo "$0" "$@"
 fi
 
 echo "
