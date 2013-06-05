@@ -16,6 +16,8 @@ then
 fi
 
 sudo bash -ek <<EOF
+#!/usr/bin/env bash
+
 echo "
 # Bootstrap Script
 
@@ -27,6 +29,7 @@ run this script as root, that is).
 
 The script is now running with user id $UID.
 "
+echo 1
 
 # Check that we are running on a supported system
 host_system=$(uname)
@@ -44,6 +47,8 @@ This does not match the script requirements and script will now exit.
   exit 1
 fi
 echo ""
+
+echo 2
 
 # Set our host name
 read -p "Please select a hostname for this machine,
