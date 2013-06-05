@@ -38,9 +38,8 @@ then
 Let's continue!"
 else
   echo "ERROR: This script will run on Linux or Mac OS X systems only!
-Your system reports as (uname -a):
-    \$(uname -a)
-This does not match the script requirements and script will now exit.
+Your system reports as [\$host_system], which does not match the script
+requirements and script will now exit.
 "
   exit 1
 fi
