@@ -17,15 +17,12 @@ The script has been tested on:
 If you have a different system and find that the script is not working, feel free to suggest changes to the script via pull requests.
 
 ## Notes    
-You will need to have a puppet manifest already defined in a git repository somewhere.
-
-You will need to either have the private RSA key necessary to connect to the git repository, or you will need to deploy one that will be created for you.
-
-The script does the bare minimum to get puppet up and running, with the intent of letting puppet manage the rest.
-
-You are best off starting with a completely clean system.
-
-You need to log in with a user account that has sudo privileges (the script elevates itself to root when executed).
+* You will need to have a puppet manifest already defined in a git repository somewhere.
+* You will need to either have the private RSA key necessary to connect to the git repository, or you will need to deploy one that will be created for you.
+* The script does the bare minimum to get puppet up and running, with the intent of letting puppet manage the rest.
+* You are best off starting with a completely clean system.
+* You need to log in with a user account that has sudo privileges (the script elevates itself to root when executed).
+* Aside from sudo rights you should make sure the curl command is available (or else not much will happen when you issue the command above)
 
 # License
 #### mpemer/puppet.linux.bootstrap: A bash script for bootstrapping linux systems for use with git-backed puppet repository
