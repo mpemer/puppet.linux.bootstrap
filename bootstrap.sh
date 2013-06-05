@@ -37,7 +37,7 @@ host_system=$(uname)
 if [[ $host_system == Darwin* ]] || [[ $host_system == Linux* ]]
 then
   echo "You are running $(uname -s) on $(uname -p), which is fine.
-You should feel good about that.
+(You should feel good about that.)
 Let's continue!"
 else
   echo "ERROR: This script will run on linux or Mac OS X systems only!
