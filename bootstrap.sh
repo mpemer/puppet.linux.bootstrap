@@ -31,13 +31,13 @@ Permissions escalation (sudo) performed and the script is now running with user 
 "
 # Check that we are running on a supported system
 host_system=\$(uname)
-if [[ $host_system == Darwin\* ]] || [[ $host_system == Linux\* ]]
+if [[ \$host_system == Darwin\* ]] || [[ \$host_system == Linux\* ]]
 then
   echo "You are running \$(uname -s) on \$(uname -p), which is fine.
 (You should feel good about that.)
 Let's continue!"
 else
-  echo "ERROR: This script will run on linux or Mac OS X systems only!
+  echo "ERROR: This script will run on Linux or Mac OS X systems only!
 Your system reports as (uname -a):
     \$(uname -a)
 This does not match the script requirements and script will now exit.
