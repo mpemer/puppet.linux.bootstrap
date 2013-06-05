@@ -1,4 +1,4 @@
-#!/usr/bin/bash -epi
+#!/usr/bin/env bash
 
 # The purpose of this script is bring the machine up to a point where:
 #  - git and puppet are installed
