@@ -27,11 +27,11 @@ These actions are done as the root super-user, so you need to have
 the ability to execute commands as root (if you did not already
 run this script as root, that is).
 
-The script is now running with user id $UID.
+Permissions escalation (sudo) performed and the script is now running with user id \$UID.
 "
 # Check that we are running on a supported system
 host_system=\$(uname)
-if [[ $host_system == Darwin* ]] || [[ $host_system == Linux* ]]
+if [[ $host_system == Darwin\* ]] || [[ $host_system == Linux\* ]]
 then
   echo "You are running \$(uname -s) on \$(uname -p), which is fine.
 (You should feel good about that.)
@@ -56,7 +56,7 @@ or hit enter to keep your current hostname [\$(hostname -s)]:
 if [[ $selected_hostname != "" ]] 
 then
     echo "Your host name will be set to $selected_hostname"
-    grep -q "${selected_hostname}" /etc/hosts ||
+    grep -q "$selected_hostname" /etc/hosts ||
         sed -i "s/127\.0\.0\.1\(\W*\)\(.*\)/127.0.0.1\1${selected_hostname} \2/" /etc/hosts
     echo "$selected_hostname" >/etc/hostname
     hostname "$selected_hostname"
@@ -69,12 +69,12 @@ Would you like to have a new RSA key created for you? [Y/n]:
 > " create_key_choice
 
 # We need to have the .ssh folder no matter what
-[ -d /root/.ssh ] || $SUDO mkdir /root/.ssh
+[ -d /root/.ssh ] || mkdir /root/.ssh
 chmod 700 /root/.ssh
 
 if [[ $create_key_choice == "" ]] ||
-   [[ $create_key_choice == y* ]] ||
-   [[ $create_key_choice == Y* ]]
+   [[ $create_key_choice == y\* ]] ||
+   [[ $create_key_choice == Y\* ]]
 then
     create_key=true
 
@@ -82,16 +82,18 @@ then
     echo "Will create a new key pair"
     if [ -e \"$private_key_path\" ]
     then
-        read -p \"A private key already exists in $private_key_path.
+        read -p "A private key already exists in $private_key_path.
 Would you like to replace it with a new one?
 (your old key will be backed up)
 (if you choose no below, your existing key will be used)
 [Y/n]:
-> \" response
-        if [[ $response == \"\" ]] || [[ $response == y* ]] || [[ $response == Y* ]]
+> " response
+        if [[ $response == '' ]]  ||
+           [[ $response == y\* ]] ||
+           [[ $response == Y\* ]]
         then
             ts=\$(date +%s)
-            echo \"Backing old key files up with the $ts extension"
+            echo "Backing old key files up with the $ts extension"
             [ -e /root/.ssh/id_rsa ] && mv /root/.ssh/id_rsa /root/.ssh/id_rsa.$ts
             [ -e /root/.ssh/id_rsa.pub ] && mv /root/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub.$ts
         else
@@ -118,7 +120,7 @@ else
     echo "Will not create a new key pair, so you'll need to provide one"
     read -s -p "Please paste the contents of your private RSA key and hit enter:
 > " private_key
-    echo -n \"$private_key\" >/root/.ssh/id_rsa
+    echo -n "$private_key" >/root/.ssh/id_rsa
     chmod 600 /root/.ssh/id_rsa
 fi
 
@@ -157,4 +159,6 @@ chmod 600 $puppet_log_file
 
 # Run puppet
 timeout -k 10 290 nice -n 19 puppet apply --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates --logdest $puppet_log_file /etc/puppet/manifests/init.pp
+
+
 EOF
