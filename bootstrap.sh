@@ -16,7 +16,7 @@ then
 fi
 
 TMPDIR=`mktemp -d`
-#trap "rm -rf $TMPDIR" EXIT
+trap "rm -rf $TMPDIR" EXIT
 
 cat >$TMPDIR/bootstrap.sh <<EOF
 #!/bin/bash -ei
@@ -119,12 +119,17 @@ Hit return when you have copied the key above."
     
 else
     echo "Will not create a new key pair, so you'll need to provide one"
-    read -s -p "Please paste the contents of your private RSA key and hit enter:
-> " private_key
-    echo -n "\$private_key" >/root/.ssh/id_rsa
-    chmod 600 /root/.ssh/id_rsa
-fi
 
+    echo -n "" >/root/.ssh/id_rsa
+    chmod 600 /root/.ssh/id_rsa
+
+    echo "Please paste the contents of your private RSA key and hit enter:
+> "
+    while read input
+    do    
+        echo "\$input" >>/root/.ssh/id_rsa
+    done
+fi
 
 # Retrieve git repo URL
 echo "Your credentials are now installed, proceeding to check out the puppet repo..."
