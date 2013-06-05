@@ -16,7 +16,7 @@ then
 fi
 
 TMPDIR=`mktemp -d`
-trap "rm -rf $TMPDIR" EXIT
+#trap "rm -rf $TMPDIR" EXIT
 
 cat >$TMPDIR/bootstrap.sh <<EOF
 #!/bin/bash -ei
