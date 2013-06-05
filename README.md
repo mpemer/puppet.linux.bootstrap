@@ -16,7 +16,9 @@
     You should have received a copy of the GNU General Public License
     along with mpemer/puppet.linux.bootstrap.  If not, see <http://www.gnu.org/licenses/>.
 
-# puppet.linux.bootstrap - bootstrapping a linux system with puppet
+# puppet.linux.bootstrap
+
+## bootstrapping a linux system with puppet
 Run this script when you have a clean installation of Linux and you wish to manage it under puppet.
 
 ## How to Use
@@ -25,7 +27,12 @@ After you have logged in to a freshly-built linux system, you can run the script
     curl -k https://raw.github.com/mpemer/puppet.linux.bootstrap/master/bootstrap.sh | bash
 
 ## Supported Systems
-The script has been tested on Ubuntu 13.04 as well as CentOS 5.9. If you have a different system and find that the script is not working, feel free to suggest changes to the script via pull requests.
+The script has been tested on:
+
+* Ubuntu 13.04 as well as 
+* CentOS 5.9
+
+If you have a different system and find that the script is not working, feel free to suggest changes to the script via pull requests.
 
 ## Notes    
 You will need to have a puppet manifest already defined in a git repository somewhere.
