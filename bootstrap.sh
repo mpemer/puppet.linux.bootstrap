@@ -45,8 +45,6 @@ requirements and script will now exit.
 fi
 echo ""
 
-echo 2
-
 # Set our host name
 read -p "Please select a hostname for this machine,
 or hit enter to keep your current hostname [\$(hostname -s)]:
@@ -72,8 +70,8 @@ Would you like to have a new RSA key created for you? [Y/n]:
 chmod 700 /root/.ssh
 
 if [[ $create_key_choice == "" ]] ||
-   [[ $create_key_choice == y\* ]] ||
-   [[ $create_key_choice == Y\* ]]
+   [[ $create_key_choice == y* ]] ||
+   [[ $create_key_choice == Y* ]]
 then
     create_key=true
 
@@ -88,8 +86,8 @@ Would you like to replace it with a new one?
 [Y/n]:
 > " response
         if [[ $response == '' ]]  ||
-           [[ $response == y\* ]] ||
-           [[ $response == Y\* ]]
+           [[ $response == y* ]] ||
+           [[ $response == Y* ]]
         then
             ts=\$(date +%s)
             echo "Backing old key files up with the $ts extension"
