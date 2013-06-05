@@ -1,4 +1,4 @@
-#!/usr/bin/env bash -ep
+#!/usr/bin/env bash
 
 # Make sure we run as root
 [ "$UID" -eq 0 ] || sudo "$0" "$@"
@@ -101,17 +101,16 @@ Hit return when you have copied the key above."
     
 else
     echo "Will not create a new key pair, so you'll need to provide one"
-    read -p "Please paste the contents of your private RSA key and hit enter:
+    read -s -p "Please paste the contents of your private RSA key and hit enter:
 > " private_key
-    echo "$private_key" >~/.ssh/id_rsa
-    chmod 600 ~/.ssh/id_rsa*
+    echo -n "$private_key" >~/.ssh/id_rsa
+    chmod 600 ~/.ssh/id_rsa
 fi
 
 
 # Retrieve git repo URL
-echo "Your credentials are now installed, let's check out the puppet repo!"
-read -p "Please paste URL to the git repo containing the puppet manifests
-for this server:
+echo "Your credentials are now installed, continuoing to check out the puppet repo..."
+read -p "Please paste the full URL to the git repo containing the puppet manifests for this server:
 > " git_url
 
 # Install packages
