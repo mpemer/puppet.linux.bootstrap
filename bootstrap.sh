@@ -10,10 +10,16 @@
 #
 
 # Make sure we run as root
-if [ $(id -u) -ne 0 ];
+#if [ $(id -u) -ne 0 ];
+#then
+#  echo "You must be root to run this script ($0). Exiting."
+#  exit 1
+#fi
+
+if [ "$UID" -ne 0 ]
 then
-  echo "You must be root to run this script ($0). Exiting."
-  exit 1
+    echo "Elevating permissions to root"
+    sudo "$0" "$@"
 fi
 
 echo "
@@ -39,7 +45,7 @@ Your system reports as (uname -a):
     $(uname -a)
 This does not match the script requirements and script will now exit.
 "
-  exit 2
+  exit 1
 fi
 echo ""
 
@@ -141,7 +147,7 @@ else
         apt-get -q -y --force-yes install git puppet
     else
         echo "Unable to locate a package manager (neither yum nor apt-get found. Exiting with sadness."
-        exit 3
+        exit 2
     fi
 fi
 
