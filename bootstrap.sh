@@ -31,7 +31,7 @@ Permissions escalation (sudo) performed and the script is now running with user 
 "
 # Check that we are running on a supported system
 host_system=\$(uname)
-if [[ \$host_system == Darwin\* ]] || [[ \$host_system == Linux\* ]]
+if [[ \$host_system == Darwin* ]] || [[ \$host_system == Linux* ]]
 then
   echo "You are running \$(uname -s) on \$(uname -p), which is fine.
 (You should feel good about that.)
