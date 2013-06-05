@@ -80,7 +80,7 @@ Would you like to have a new RSA key created for you? [Y/n]:
 > " create_key_choice
 
 # We need to have the .ssh folder no matter what
-[ ! -d /root/.ssh ] && $SUDO mkdir /root/.ssh
+[ ! -d /root/.ssh ] || $SUDO mkdir /root/.ssh
 $SUDO chmod 700 /root/.ssh
 
 if [[ $create_key_choice == "" ]] ||
