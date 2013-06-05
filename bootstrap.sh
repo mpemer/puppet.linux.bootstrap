@@ -60,6 +60,7 @@ then
         sed -i "s/127\.0\.0\.1\(\W*\)\(.*\)/127.0.0.1\1\$selected_hostname \2/" /etc/hosts
     echo "\$selected_hostname" >/etc/hostname
     hostname "\$selected_hostname"
+    /etc/init.d/hostname restart
 fi
 
 
@@ -80,7 +81,7 @@ then
 
     private_key_path=~/.ssh/id_rsa
     echo "Will create a new key pair"
-    if [ -e "\$private_key_path" ]
+    if [ -e \$private_key_path ]
     then
         read -p "A private key already exists in \$private_key_path.
 Would you like to replace it with a new one?
@@ -163,4 +164,4 @@ timeout -k 10 290 nice -n 19 puppet apply --environment=production --modulepath 
 
 EOF
 chmod 755 $TMPDIR/bootstrap.sh
-sudo $TMPDIR/bootstrap.sh
+sudo bash -c $TMPDIR/bootstrap.sh
