@@ -3,7 +3,7 @@
 # The purpose of this script is bring the machine up to a point where:
 #  - git and puppet are installed
 #  - puppet git repo is checked out into /etc/puppet
-#  - puppet apply is triggered (update.sh)
+#  - puppet apply is run once
 #
 # Important to note that absolutely nothing else should be done in this script.
 # The rest should be contained in the puppet manifests.
@@ -38,6 +38,7 @@ if [[ \$host_system == Darwin* ]] || [[ \$host_system == Linux* ]]
 then
   echo "You are running \$(uname -s) on \$(uname -p), which is fine.
 (You should feel good about that.)
+
 Let's continue!"
 else
   echo "ERROR: This script will run on Linux or Mac OS X systems only!
