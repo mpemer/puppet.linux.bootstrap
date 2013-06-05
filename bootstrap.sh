@@ -81,7 +81,7 @@ Would you like to have a new RSA key created for you? [Y/n]:
 > " create_key_choice
 
 # We need to have the .ssh folder no matter what
-bash -c "$SUDO [ ! -d /root/.ssh ] || mkdir /root/.ssh"
+bash -c "$SUDO [ -d /root/.ssh ] || $SUDO mkdir /root/.ssh"
 bash -c "$SUDO chmod 700 /root/.ssh"
 
 if [[ $create_key_choice == "" ]] ||
@@ -104,8 +104,8 @@ Would you like to replace it with a new one?
         then
             ts=$(date +%s)
             echo "Backing old key files up with the $ts extension"
-            bash -c "$SUDO [ -e /root/.ssh/id_rsa ] && mv /root/.ssh/id_rsa /root/.ssh/id_rsa.$ts"
-            bash -c "$SUDO [ -e /root/.ssh/id_rsa.pub ] && mv /root/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub.$ts"
+            bash -c "$SUDO [ -e /root/.ssh/id_rsa ] && $SUDO mv /root/.ssh/id_rsa /root/.ssh/id_rsa.$ts"
+            bash -c "$SUDO [ -e /root/.ssh/id_rsa.pub ] && $SUDO mv /root/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub.$ts"
         else
             echo "Reusing existing RSA key"
             create_key=false
