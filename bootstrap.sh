@@ -16,10 +16,10 @@ then
 fi
 
 TMPDIR=`mktemp -d`
-#trap "rm -rf $TMPDIR" EXIT
+trap "rm -rf $TMPDIR" EXIT
 
 cat >$TMPDIR/bootstrap.sh <<EOF
-#!/usr/bin/bash -ei
+#!/bin/bash -ei
 
 echo "
 # Bootstrap Script
