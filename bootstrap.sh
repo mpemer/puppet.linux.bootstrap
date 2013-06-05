@@ -29,19 +29,17 @@ run this script as root, that is).
 
 The script is now running with user id $UID.
 "
-echo 1
-
 # Check that we are running on a supported system
-host_system=$(uname)
+host_system=\$(uname)
 if [[ $host_system == Darwin* ]] || [[ $host_system == Linux* ]]
 then
-  echo "You are running $(uname -s) on $(uname -p), which is fine.
+  echo "You are running \$(uname -s) on \$(uname -p), which is fine.
 (You should feel good about that.)
 Let's continue!"
 else
   echo "ERROR: This script will run on linux or Mac OS X systems only!
 Your system reports as (uname -a):
-    $(uname -a)
+    \$(uname -a)
 This does not match the script requirements and script will now exit.
 "
   exit 1
@@ -52,7 +50,7 @@ echo 2
 
 # Set our host name
 read -p "Please select a hostname for this machine,
-or hit enter to keep your current hostname [$(hostname -s)]:
+or hit enter to keep your current hostname [\$(hostname -s)]:
 > " selected_hostname
 
 if [[ $selected_hostname != "" ]] 
@@ -92,7 +90,7 @@ Would you like to replace it with a new one?
 > \" response
         if [[ $response == \"\" ]] || [[ $response == y* ]] || [[ $response == Y* ]]
         then
-            ts=$(date +%s)
+            ts=\$(date +%s)
             echo \"Backing old key files up with the $ts extension"
             [ -e /root/.ssh/id_rsa ] && mv /root/.ssh/id_rsa /root/.ssh/id_rsa.$ts
             [ -e /root/.ssh/id_rsa.pub ] && mv /root/.ssh/id_rsa.pub /root/.ssh/id_rsa.pub.$ts
