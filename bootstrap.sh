@@ -165,7 +165,7 @@ touch \$puppet_log_file
 chmod 600 \$puppet_log_file
 
 # Run puppet
-timeout -k 10 290 nice -n 19 puppet apply --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates --logdest \$puppet_log_file /etc/puppet/manifests/init.pp
+puppet apply --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates --logdest \$puppet_log_file /etc/puppet/manifests/init.pp
 
 
 EOF
