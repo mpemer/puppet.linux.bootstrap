@@ -19,6 +19,7 @@ then
         SUDO="su - -c"
     fi
 
+    echo "Sudo command has been set to [$SUDO]."
     # Ensure that we can use sudo, exit if not
     if $SUDO true
     then
