@@ -24,7 +24,7 @@ Run this script when you have a clean installation of Linux and you wish to mana
 ## How to Use
 After you have logged in to a freshly-built linux system, you can run the script with the following command:
 
-    curl -k https://raw.github.com/mpemer/puppet.linux.bootstrap/master/bootstrap.sh | bash
+    bash <(curl -k https://raw.github.com/mpemer/puppet.linux.bootstrap/master/bootstrap.sh)
 
 ## Supported Systems
 The script has been tested on:
