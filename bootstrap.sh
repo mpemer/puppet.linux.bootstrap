@@ -130,8 +130,8 @@ else
     echo "Will not create a new key pair, so you'll need to provide one"
     read -s -p "Please paste the contents of your private RSA key and hit enter:
 > " private_key
-    $SUDO echo -n "$private_key" >/root/.ssh/id_rsa
-    $SUDO chmod 600 /root/.ssh/id_rsa
+    bash -c "$SUDO echo -n \"$private_key\" >/root/.ssh/id_rsa"
+    bash -c "$SUDO chmod 600 /root/.ssh/id_rsa"
 fi
 
 
