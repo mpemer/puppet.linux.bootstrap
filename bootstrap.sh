@@ -61,7 +61,7 @@ then
         sed -i "s/127\.0\.0\.1\(\W*\)\(.*\)/127.0.0.1\1\$selected_hostname \2/" /etc/hosts
     echo "\$selected_hostname" >/etc/hostname
     hostname "\$selected_hostname"
-    /etc/init.d/hostname restart
+    [ -e /etc/init.d/hostname ] && /etc/init.d/hostname restart
 fi
 
 
