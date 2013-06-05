@@ -1,4 +1,4 @@
-#!/bin/bash -ep
+#!/usr/bin/env bash
 
 # Make sure we run as root
 [ "$UID" -eq 0 ] || sudo "$0" "$@"
