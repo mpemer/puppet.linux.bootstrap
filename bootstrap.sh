@@ -123,9 +123,9 @@ else
     echo -n "" >/root/.ssh/id_rsa
     chmod 600 /root/.ssh/id_rsa
 
-    echo "Please paste the contents of your private RSA key and hit enter:
-> "
-    while read input
+    echo "Please paste the contents of your private RSA key at the prompt.
+You may end your input with CTRL-D."
+    while read -p "> " input
     do    
         echo "\$input" >>/root/.ssh/id_rsa
     done
