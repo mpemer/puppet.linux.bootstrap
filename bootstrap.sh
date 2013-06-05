@@ -15,7 +15,10 @@ then
     exit 255
 fi
 
-sudo bash -ei <<EOF
+TMPDIR=`mktemp -d`
+trap "rm -rf $TMPDIR" EXIT
+
+cat >$TMPDIR/bootstrap.sh <<EOF
 #!/usr/bin/bash -ei
 
 echo "
@@ -159,3 +162,5 @@ timeout -k 10 290 nice -n 19 puppet apply --environment=production --modulepath 
 
 
 EOF
+chmod 755 $TMPDIR/bootstrap.sh
+sudo $TMPDIR/bootstrap.sh
