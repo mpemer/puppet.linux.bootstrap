@@ -18,6 +18,15 @@ then
     else
         SUDO="su - -c"
     fi
+
+    # Ensure that we can use sudo, exit if not
+    if $SUDO true
+    then
+        echo "Sudo seems to work, continuing..."
+    else
+        echo "ERROR: not able to run sudo. Exiting."
+        exit 255
+    fi
 fi
 
 echo "
