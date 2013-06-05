@@ -24,6 +24,8 @@ connect it to a puppet manifest git repository and run puppet.
 These actions are done as the root super-user, so you need to have
 the ability to execute commands as root (if you did not already
 run this script as root, that is).
+
+The script is now running with user id $UID.
 "
 
 # Check that we are running on a supported system
