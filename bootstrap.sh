@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/bash -ei
 
 # The purpose of this script is bring the machine up to a point where:
 #  - git and puppet are installed
@@ -15,8 +15,8 @@ then
     exit 255
 fi
 
-sudo bash -ek <<EOF
-#!/usr/bin/env bash
+sudo bash -ei <<EOF
+#!/usr/bin/bash -ei
 
 echo "
 # Bootstrap Script
