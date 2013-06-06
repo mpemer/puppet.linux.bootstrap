@@ -143,7 +143,7 @@ then
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
     rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
     yum install --enablerepo=webtatic git || true
-    \curl -L https://get.rvm.io | bash -s stable --rails
+    \curl -L https://get.rvm.io | bash -s stable --gems
     export PATH="/usr/local/rvm/bin:\$PATH"
     gem install puppet
 else    
