@@ -142,7 +142,7 @@ if which yum
 then
     rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm
     yum install --enablerepo=webtatic git
-    \curl -L https://get.rvm.io | bash -s stable
+    \curl -L https://get.rvm.io | bash -s stable --rails
     gem install puppet
 else    
     if which apt-get
