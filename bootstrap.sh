@@ -162,10 +162,12 @@ export GIT_SSL_NO_VERIFY=true
 git clone \$git_url /etc/puppet
 
 # Make a log file for puppet
-puppet_log_file=/var/log/puppet/puppet.log
+puppet_log_dir=/var/log/puppet
+puppet_log_file=\$puppet_log_dir/puppet.log
+mkdir \$puppet_log_dir
+chmod 755 \$puppet_log_dir
 touch \$puppet_log_file
 chmod 644 \$puppet_log_file
-chmod 755 /var/log/puppet
 
 # Run puppet
 puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/init.pp
