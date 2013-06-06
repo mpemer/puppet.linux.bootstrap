@@ -174,4 +174,4 @@ EOF
 chmod 755 $TMPDIR/bootstrap.sh
 sudo bash -c $TMPDIR/bootstrap.sh
 
-[ grep "/usr/local/rvm/bin" ~/.bashrc ] || echo "PATH=/usr/local/rvm/bin:\$PATH # Add RVM to PATH for scripting" >>~/.bashrc
+grep "/usr/local/rvm/bin" ~/.bashrc || echo "PATH=/usr/local/rvm/bin:\$PATH # Add RVM to PATH for scripting" >>~/.bashrc
