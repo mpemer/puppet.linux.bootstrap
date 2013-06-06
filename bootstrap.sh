@@ -143,6 +143,7 @@ then
     rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm
     yum install --enablerepo=webtatic git
     \curl -L https://get.rvm.io | bash -s stable --rails
+    export PATH=/usr/local/rvm/bin:$PATH
     gem install puppet
 else    
     if which apt-get
@@ -173,4 +174,4 @@ EOF
 chmod 755 $TMPDIR/bootstrap.sh
 sudo bash -c $TMPDIR/bootstrap.sh
 
-[ grep "/usr/local/rvm/bin" ~/.bashrc ] || echo "PATH=\$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting" >>~/.bashrc
+[ grep "/usr/local/rvm/bin" ~/.bashrc ] || echo "PATH=/usr/local/rvm/bin:\$PATH # Add RVM to PATH for scripting" >>~/.bashrc
