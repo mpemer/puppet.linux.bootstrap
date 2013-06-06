@@ -143,7 +143,7 @@ then
     rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
     rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
     yum install --enablerepo=webtatic git || true
-    \curl -L https://get.rvm.io | bash -s stable --gems=puppet
+    \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=puppet
 else    
     if which apt-get
     then
@@ -172,9 +172,9 @@ chmod 644 \$puppet_log_file
 # Run puppet
 puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/init.pp
 
-
 EOF
 chmod 755 $TMPDIR/bootstrap.sh
 sudo bash -c $TMPDIR/bootstrap.sh
 
-grep -q ".rvm/scripts/rvm" ~/.bashrc || echo "source ~/.rvm/scripts/rvm" >>~/.bashrc
+\curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=puppet,gollum,gollum-site
+puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/local.pp
