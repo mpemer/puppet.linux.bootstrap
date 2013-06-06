@@ -140,10 +140,10 @@ read -p "Please paste the full URL to the git repo containing the puppet manifes
 # Install packages
 if which yum
 then
-    yes | rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
-    yes | rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
-    yes | yum install --enablerepo=webtatic git || true
-    yes | \curl -L https://get.rvm.io | bash -s stable --gems=puppet
+    rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
+    rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
+    yum install --enablerepo=webtatic git || true
+    \curl -L https://get.rvm.io | bash -s stable --gems=puppet
 else    
     if which apt-get
     then
@@ -158,7 +158,8 @@ fi
 
 # Check out git repo
 rm -fR /etc/puppet
-GIT_SSL_NO_VERIFY=true git clone \$git_url /etc/puppet
+export GIT_SSL_NO_VERIFY=true
+git clone \$git_url /etc/puppet
 
 # Make a log file for puppet
 puppet_log_file=/var/log/puppet/puppet.log
