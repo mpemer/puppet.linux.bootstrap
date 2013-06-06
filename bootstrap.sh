@@ -140,9 +140,10 @@ read -p "Please paste the full URL to the git repo containing the puppet manifes
 # Install packages
 if which yum
 then
-    wget -O /etc/yum.repos.d/public-yum-el5.repo http://public-yum.oracle.com/public-yum-el5.repo
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/i386/epel-release-5-4.noarch.rpm
-    yum -y install puppet git
+    rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm
+    yum install --enablerepo=webtatic git
+    \curl -L https://get.rvm.io | bash -s stable
+    gem install puppet
 else    
     if which apt-get
     then
@@ -171,3 +172,5 @@ puppet apply --environment=production --modulepath /etc/puppet/modules --templat
 EOF
 chmod 755 $TMPDIR/bootstrap.sh
 sudo bash -c $TMPDIR/bootstrap.sh
+
+[ grep "/usr/local/rvm/bin" ~/.bashrc ] || echo "PATH=\$PATH:/usr/local/rvm/bin # Add RVM to PATH for scripting" >>~/.bashrc
