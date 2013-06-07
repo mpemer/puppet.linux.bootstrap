@@ -170,6 +170,7 @@ touch \$puppet_log_file
 chmod 644 \$puppet_log_file
 
 # Run puppet
+source /usr/local/rvm/scripts/rvm
 puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/init.pp
 
 EOF
@@ -177,4 +178,5 @@ chmod 755 $TMPDIR/bootstrap.sh
 sudo bash -c $TMPDIR/bootstrap.sh
 
 \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=puppet,gollum,gollum-site
+source ~/.rvm/scripts/rvm
 puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/local.pp
