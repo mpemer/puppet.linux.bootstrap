@@ -142,9 +142,9 @@ read -p "Please paste the full URL to the git repo containing the puppet manifes
 # Install packages
 if which yum
 then
-    rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
-    rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
-    yum install --enablerepo=webtatic git || true
+    yes | rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
+    yes | rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
+    yum -y install --enablerepo=webtatic git || true
     \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=puppet
 else    
     if which apt-get
