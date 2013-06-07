@@ -15,6 +15,8 @@ then
     exit 255
 fi
 
+# Work in a temporary directory 
+# Create a trap that removes our directory when we are done
 TMPDIR=`mktemp -d`
 trap "rm -rf $TMPDIR" EXIT
 
@@ -159,6 +161,8 @@ fi
 # Check out git repo
 rm -fR /etc/puppet
 export GIT_SSL_NO_VERIFY=true
+echo "StrictHostKeyChecking=no" >>/root/.ssh/config
+chmod 600 /root/.ssh/config
 git clone \$git_url /etc/puppet
 
 # Make a log file for puppet
@@ -176,7 +180,3 @@ puppet apply --verbose --environment=production --modulepath /etc/puppet/modules
 EOF
 chmod 755 $TMPDIR/bootstrap.sh
 sudo bash -c $TMPDIR/bootstrap.sh
-
-\curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=puppet,gollum,gollum-site
-source ~/.rvm/scripts/rvm
-puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/local.pp
