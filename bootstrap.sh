@@ -168,7 +168,7 @@ git clone \$git_url /etc/puppet
 # Make a log file for puppet
 puppet_log_dir=/var/log/puppet
 puppet_log_file=\$puppet_log_dir/puppet.log
-mkdir \$puppet_log_dir
+[ -d \$puppet_log_dir ] || mkdir \$puppet_log_dir
 chmod 755 \$puppet_log_dir
 touch \$puppet_log_file
 chmod 644 \$puppet_log_file
