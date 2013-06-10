@@ -177,7 +177,7 @@ chmod 644 \$puppet_log_file
 if [ -e /usr/local/rvm/scripts/rvm ]
 then
     source /usr/local/rvm/scripts/rvm
-    echo \"source /usr/local/rvm/scripts/rvm\" >>/etc/bashrc
+    echo "source /usr/local/rvm/scripts/rvm" >>/etc/bashrc
 fi
 puppet apply --verbose --environment=production --modulepath /etc/puppet/modules --templatedir /etc/puppet/templates /etc/puppet/manifests/init.pp
 
