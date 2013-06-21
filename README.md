@@ -3,11 +3,36 @@
 ## bootstrapping a linux system with puppet
 Run this script when you have a clean installation of Linux and you wish to manage it under puppet.
 
-## How to Use
+## How to Use ##
+
+### Interactive Dialog Mode
 After you have logged in to a freshly-built linux system, you can run the script with the following command:
 
-    bash <(curl -k https://raw.github.com/puppet.linux.bootstrap/master/bootstrap.sh)
+    bash <(curl -k https://raw.github.com/mpemer/puppet.linux.bootstrap/master/bootstrap.sh)
 
+### Non-Interactive Scripted Mode ###
+
+For situations where you wish to automate the whole bootstrap process, you may want to enable the non-interactive mode. You do this by providing two or three exported environment variables as per below. This causes the script to bypass the interactive dialog and work with the information provided in the environment variables.
+
+First, define your variables:
+
+    export BOOTSTRAP_RSA_KEY="-----BEGIN RSA PRIVATE KEY-----
+    .
+    .
+    .
+    .  your private key contents
+    .
+    .
+    .
+    -----END RSA PRIVATE KEY-----"
+    export BOOTSTRAP_GIT_URL="git@github.com:some-rest-of-url-to-git-repo.git"
+    export BOOTSTRAP_HOST_NAME="yourwonderfulhostname"
+
+Then, execute the bootstrap script just like the previous example:
+
+    bash <(curl -k https://raw.github.com/mpemer/puppet.linux.bootstrap/master/bootstrap.sh)
+
+### Sudo
 Note that you need to have sudo abilities to run this script. You can test whether you have sudo rights with the following command:
 
     sudo id
