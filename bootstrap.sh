@@ -186,7 +186,7 @@ else
     # If yum exists, assume we are on a RH5 system
     then
         # TODO: This is a hard-coded section that will soon need to change
-        #yes | rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
+        yes | rpm -Uvh http://dl.fedoraproject.org/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm || true
         yes | rpm -Uvh http://repo.webtatic.com/yum/centos/5/latest.rpm || true
         yum -y install --enablerepo=webtatic git || true
         \curl -L https://get.rvm.io | bash -s stable --ruby=1.9.3 --gems=puppet
